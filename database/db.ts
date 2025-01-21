@@ -4,13 +4,14 @@ let MDB: Connection | null = null;
 export const connectDB = async (): Promise<Connection> => {
 
   const dbName = "SocialMediaDB"
-
+  const userName = "DemoUser"
+  const password = "Demo123"
 
   if (MDB) {
     return MDB;
   }
 
-  let connectionUrl = `mongodb://localhost:27017/${dbName}`
+  let connectionUrl: string = `mongodb+srv://${userName}:${password}@cluster0.teccyhd.mongodb.net/${dbName}?retryWrites=true&w=majority&appName=Cluster0`
   try {
 
     const db = await mongoose.connect(connectionUrl);
